@@ -1,5 +1,5 @@
 variable "deployer_role" {
-  type    = string
+  type = string
 }
 
 variable "region" {
@@ -12,24 +12,21 @@ variable "server_name" {
   default = "my-awesome-server"
 }
 
-variable "tags" {
-  type = map(string)
-}
-
 variable "environment" {
-  type = string
+  type    = string
   default = "dev"
 }
 
 variable "owner" {
-  type = string
+  type    = string
   default = "pafable"
 }
 
 locals {
-  default_tags {
-    Name = "${var.server_name}-${count.index}"
+  default_tags = {
+    Name        = "${var.server_name}"
     environment = var.environment
-    owner = var.owner
+    owner       = var.owner
+    project     = "demo"
   }
 }

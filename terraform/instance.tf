@@ -40,11 +40,5 @@ resource "aws_instance" "my_amzn2" {
     echo 'Hello world!' > /tmp/hello.txt
   EOF
 
-#  tags = merge(var.tags,
-#    tomap({"Name" = "${var.server_name}-${count.index}"}),
-#    tomap({"environment" = var.environment}),
-#    tomap({"owner" = var.owner})
-#  )
-
   tags = local.default_tags
 }
