@@ -25,3 +25,11 @@ variable "owner" {
   type = string
   default = "pafable"
 }
+
+locals {
+  default_tags {
+    Name = "${var.server_name}-${count.index}"
+    environment = var.environment
+    owner = var.owner
+  }
+}
