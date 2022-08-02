@@ -9,3 +9,26 @@ terraform init \
     -backend-config="dynamodb_table=DYNAMODB_TABLE" \
     -backend-config="encrypt=true"
 ```
+
+Create a tfvars file
+```
+deployer_role  = ""
+environment    = ""
+instance_count = 1
+instance_type  = "t2.micro"
+isDemo         = true
+key_name       = ""
+owner          = ""
+region         = ""
+server_name    = ""
+```
+
+Create terraform plan
+```
+terraform plan -var-file vars.tfvars -out plan
+```
+
+Apply plan
+```
+terraform apply plan
+```
