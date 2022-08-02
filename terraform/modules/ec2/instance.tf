@@ -24,10 +24,10 @@ data "aws_ami" "amzn2" {
 }
 
 resource "aws_instance" "my_amzn2" {
-  count         = 1
+  count         = var.instance_count
   ami           = data.aws_ami.amzn2.id
-  instance_type = "t2.micro"
-  key_name      = "dev-deployer100"
+  instance_type = var.instance_type
+  key_name      = var.key_name
 
   vpc_security_group_ids = [aws_security_group.allow_ssh.id]
 
