@@ -1,6 +1,6 @@
 # EC2 Terraform
 
-Initialize with backend configs
+## Initialize with backend configs
 ```
 terraform init \
     -backend-config="bucket=BUCKET_NAME" \
@@ -10,7 +10,7 @@ terraform init \
     -backend-config="encrypt=true"
 ```
 
-Create a tfvars file
+## Create a tfvars file
 ```
 deployer_role  = ""
 environment    = ""
@@ -23,12 +23,35 @@ region         = ""
 server_name    = ""
 ```
 
-Create terraform plan
+## Create terraform plan
 ```
 terraform plan -var-file vars.tfvars -out plan
 ```
 
-Apply plan
+## Apply plan
 ```
 terraform apply plan
+```
+
+## Using the makefile
+Using the makefile will require to create 4 environment variables below.
+These 4 environment variables will be used in `terraform init` for the backend configs.
+- BUCKET
+- REGION
+- KEY
+- LOCK_DB
+
+Initializing
+```
+make tfinit
+```
+
+Deploying
+```
+make tfdeploy
+```
+
+Destroying
+```
+make tfdestroy
 ```
