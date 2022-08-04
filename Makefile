@@ -1,5 +1,8 @@
+TF = $(shell terraform)
+TF_DIR = "terraform"
+
 tfinit:
-	terraform -chdir=terraform init \
+	${TF} -chdir=${TF_DIR} init \
  		-backend-config="bucket=${BUCKET}" \
  		-backend-config="region=${REGION}" \
  		-backend-config="key=${KEY}" \
@@ -7,14 +10,14 @@ tfinit:
  		-backend-config="encrypt=true"
 
 tfdeploy: tfinit
-	terraform -chdir=terraform plan \
+	${TF} -chdir=${TF_DIR} plan \
 		-var-file vars.tfvars \
 		-out plan
-	terraform -chdir=terraform apply plan
+	${TF} -chdir=${TF_DIR} apply plan
 
 tfdestroy:
-	terraform -chdir=terraform plan \
+	${TF} -chdir=${TF_DIR} plan \
 		-var-file vars.tfvars \
 		-out plan \
 		-destroy
-	terraform -chdir=terraform apply plan
+	${TF} -chdir=${TF_DIR} apply plan
