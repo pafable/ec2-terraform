@@ -16,7 +16,7 @@ provider "aws" {
   }
 }
 
-module "my_instance" {
+module "ec2_instance" {
   source         = "./modules/ec2"
   deployer_role  = var.deployer_role
   environment    = var.environment
@@ -30,13 +30,13 @@ module "my_instance" {
 }
 
 output "instance_arn" {
-  value = module.my_instance.arn
+  value = module.ec2_instance.arn
 }
 
 output "instance_id" {
-  value = module.my_instance.id
+  value = module.ec2_instance.id
 }
 
 output "instance_public_dns" {
-  value = module.my_instance.pub_dns
+  value = module.ec2_instance.pub_dns
 }

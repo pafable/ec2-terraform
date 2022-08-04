@@ -23,7 +23,7 @@ data "aws_ami" "amzn2" {
   }
 }
 
-resource "aws_instance" "my_amzn2" {
+resource "aws_instance" "amznl2" {
   count         = var.instance_count
   ami           = data.aws_ami.amzn2.id
   instance_type = var.instance_type
